@@ -19,7 +19,7 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:load_name, :route, :date, :start_time, :end_time, :stops)
+    params.require(:route).permit(:load_name, :route, :date, :start_time, :end_time,)
   end
 
   def set_route
