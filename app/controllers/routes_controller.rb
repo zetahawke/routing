@@ -1,5 +1,9 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: %i[show map]
+  before_action :set_route, only: %i[show map destroy]
+
+  def index
+    @routes = Route.all
+  end
 
   def new
     @route = Route.new
@@ -8,10 +12,21 @@ class RoutesController < ApplicationController
   def create
     route = Route.new(route_params)
     if route.save!
+      route.proccess_stops(params)
       redirect_to route_map_path(route)
     else
       redirect_back fallback_location
     end
+  rescue StandardError => e
+    puts e.message
+    redirect_to new_route_path(), notice: "Error: #{e.message}"
+  end
+
+  def destroy
+    redirect_to routes_path if @route.destroy
+  rescue StandardError =>
+    puts e.message
+    redirect_to routes_path, notice: 'cant hold that request'
   end
 
   def map; end
