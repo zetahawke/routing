@@ -5,6 +5,12 @@ class Route < ApplicationRecord
 
   validates :load_name, uniqueness: true
 
+  include Filterable
+
+  scope :load_name, -> (load_name) { where('load_name like ?', "%#{load_name}%") }
+  scope :start_time, -> (start_time) { where('CAST ( start_time AS text ) like ?', "%#{start_time}%") }
+  scope :date, -> (date) { where('CAST ( date AS text ) like ?', "%#{date}%") }
+
   def self.process_stops(params)
     raise StandardError.new('Cant verify params to build route stops') if params.blank?
 
@@ -33,11 +39,7 @@ class Route < ApplicationRecord
         load_name: "#{load_name}_#{index}",
         route: route_number,
         start_time: stops.first[:arrived_time].try(:to_time),
-        end_time: stops.last[:arrived_time].try(:to_time),
-        date: DateTime.current.change(
-          hour: stops.last[:arrived_time].split(':').first.try(:to_i),
-          min: stops.last[:arrived_time].split(':').second.try(:to_i)
-        )
+        end_time: stops.last[:arrived_time].try(:to_time)
       )
       # Route.build_stops(stops, route) now enqueued
       Delayed::Job.enqueue RouteUploads::ProcessFileUploadJob.new(route.id, stops)
