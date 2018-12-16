@@ -16,6 +16,7 @@
           <th>Tiempo de inicio</th>
           <th>Tiempo de término</th>
           <th>Paradas</th>
+          <th>Estado</th>
           <th>Mapa</th>
         </tr>
       </thead>
@@ -29,6 +30,7 @@
             <td><%= route.start_time%></td>
             <td><%= route.end_time%></td>
             <td><%= route.stops.count%></td>
+            <td><%= route.status%></td>
             <td>
               <%= link_to 'Ver', route_map_path(route) %>
             </td>

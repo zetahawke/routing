@@ -1,4 +1,4 @@
-ruta, hora_parada ,carga  , latitude  ,  longitude
+ruta,hora_parada,carga,latitude,longitude
 1,10:00:00 AM,10,-34.177361,-70.830348
 1,10:15:00 AM,15,-33.386672,-70.794256
 1,11:00:00 AM,20,-33.716194,-70.726923

@@ -10,10 +10,10 @@ class RoutesController < ApplicationController
   end
 
   def create
-    binding.pry
     # route = Route.new(route_params)
     # if route.save!
-    if Route.proccess_stops(params])
+    result = Route.process_stops(params)
+    if result
       redirect_to routes_path
     else
       redirect_back :fallback_location
