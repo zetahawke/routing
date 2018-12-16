@@ -3,7 +3,7 @@ Develop a web application that allows you to visualize routes from a csv file an
 filters on the information loaded. For them it will be necessary to create a module of
 file upload and a route display module.
 
-* Necessary knowledge
+## Necessary knowledge
 - HTML
 - Rails
 
@@ -27,7 +27,7 @@ route
 3. Extra: User displays on a map all routes loaded for a specific date.
 Default: today.
 
-* Relevant entities
+## Relevant entities
 Route
 - Description: A route is a collection of stops
 - Attributes:
@@ -50,7 +50,7 @@ or deliver a load. For this case we ignore the type of stop (pick up / deliver)
 - latitude
 - length
 
-* Implementation details
+## Implementation details
 To load files and load progress display, you must separate the work from the
 web server (Input data entry) and background works (Read process of
 files and transformation to the data model). For this you can use delayed jobs or
@@ -59,7 +59,7 @@ Extra:
 To visualize routes on the map, you must use the google API:
 AIzaSyCKRdW3xHzrLNLnOAXJI1dL5w0hollGrpI
 
-* Stages
+## Stages
 Stage 1:
 - Draw solution. Show data model to use
 - Create Rails project
@@ -76,31 +76,31 @@ Stage 4: depends on stage 3
 
 
 
-* File format (stops)
+## File format (stops)
 
-ruta hora_parada carga   latitude    longitude
-1        10:00          10     -34.177361 -70.830348
-1        10:15          15     -33.386672 -70.794256
-1        11:00          20     -33.716194 -70.726923
-1        11:30          13     -33.417744 -70.649532
-2        8:00            12     -33.047369 -71.605453
-2        8:25            54     -33.4084     -70.78226
-2        8:50            35     -33.417347 -70.607967
-2        10:00          28     -33.429832 -70.657829
-2        10:30          16     -33.497821 -70.606803
-3        12:00          41     -33.499986 -70.613921
-3        12:30          27     -33.49978    -70.61596
-3        13:30          16     -33.383989 -70.592601
+- ruta hora_parada carga   latitude    longitude
+- 1        10:00          10     -34.177361 -70.830348
+- 1        10:15          15     -33.386672 -70.794256
+- 1        11:00          20     -33.716194 -70.726923
+- 1        11:30          13     -33.417744 -70.649532
+- 2        8:00            12     -33.047369 -71.605453
+- 2        8:25            54     -33.4084     -70.78226
+- 2        8:50            35     -33.417347 -70.607967
+- 2        10:00          28     -33.429832 -70.657829
+- 2        10:30          16     -33.497821 -70.606803
+- 3        12:00          41     -33.499986 -70.613921
+- 3        12:30          27     -33.49978    -70.61596
+- 3        13:30          16     -33.383989 -70.592601
 
 
 
-* Links of interest
+## Links of interest
 https://developers.google.com/maps/documentation/javascript/examples/polyline-simple
 https://www.sitepoint.com/delayed-jobs-best-practices/
 
 https://developers.google.com/maps/documentation/javascript/
 
-* Estimated develop times
+## Estimated develop times
 
 Requirements: 1h
 File upload and processing: 3h
