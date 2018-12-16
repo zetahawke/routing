@@ -24,6 +24,7 @@ module RouteUploads
 
     def perform
       route = Route.find route_id
+      update_status('processing')
       route.build_stops(stops)
     end
 
@@ -35,11 +36,12 @@ module RouteUploads
       route.save!
     end
 
-    def check_and_update_status
-      route = Route.find route_id
-      raise StandardError.new("Route: #{route.id} is not on status 'new' (status: #{route.status}") unless route.status == 'new'
-      route.status = 'processing'
-      route.save!
-    end
+    # unused recommended method
+    # def check_and_update_status
+    #   route = Route.find route_id
+    #   raise StandardError.new("Route: #{route.id} is not on status 'new' (status: #{route.status}") unless route.status == 'new'
+    #   route.status = 'processing'
+    #   route.save!
+    # end
   end
 end
