@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="section">
+    <div class="row center-align">
+      <h3>Nueva Ruta</h3>
+      <br>
+      <%= form_for :route, url: {action: "create"} do |f| %>
+        <%= f.label :load_name, value: 'Nombre de carga'  %>
+        <%= f.text_field :load_name  %>
+        
+        <%= label_tag 'Cargar paradas'  %>
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Paradas</span>
+            <input type="file" name='route[stops]' id='route_stops'>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+
+        <input type="submit" value='Guardar' class='btn'>
+
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="section">
+    <div class="row center-align">
+      <h3>Rutas</h3>
+      <br>
+      <%= link_to 'Nuevas rutas', new_route_path, class: 'btn-large center-align waves-effect waves-light green' %>
+    </div>
+    <br>
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Nombre de carga</th>
+          <th>Ruta</th>
+          <th>Fecha</th>
+          <th>Tiempo de inicio</th>
+          <th>Tiempo de término</th>
+          <th>Paradas</th>
+          <th>Estado</th>
+          <th>Mapa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @routes.each do |route| %>
+          <tr>
+            <td><%= route.id%></td>
+            <td><%= route.load_name%></td>
+            <td><%= route.route%></td>
+            <td><%= route.date%></td>
+            <td><%= route.start_time%></td>
+            <td><%= route.end_time%></td>
+            <td><%= route.stops.count%></td>
+            <td><%= route.status%></td>
+            <td>
+              <%= link_to 'Ver', route_map_path(route) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_172001) do
+ActiveRecord::Schema.define(version: 2018_12_16_214559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.integer "delayed_reference_id"
+    t.string "delayed_reference_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["delayed_reference_id"], name: "delayed_jobs_delayed_reference_id"
+    t.index ["delayed_reference_type"], name: "delayed_jobs_delayed_reference_type"
+    t.index ["queue"], name: "delayed_jobs_queue"
+  end
 
   create_table "routes", force: :cascade do |t|
     t.string "load_name"
@@ -23,17 +42,18 @@ ActiveRecord::Schema.define(version: 2018_12_16_172001) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "stops", force: :cascade do |t|
-    t.bigint "route_id_id"
+    t.bigint "route_id"
     t.datetime "arrived_time"
     t.integer "charge"
     t.string "latitude"
     t.string "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["route_id_id"], name: "index_stops_on_route_id_id"
+    t.index ["route_id"], name: "index_stops_on_route_id"
   end
 
 end
