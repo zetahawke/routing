@@ -1,1 +1,18 @@
+<div class="container">
+  <div class="section">
+    <div class="row center-align">
+      <form action="/" method="get">
+        <div class="col m3">
+          <label for="date">Fecha</label>
+          <input type="date" name="date" id="date">
+        </div>
+        <div class="col m9">
+          <br>
+          <input type="submit" value="Buscar" class='btn right'>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
 <%= react_component("Routes/Map", { coords: @coords }, { id: 'google-container' }) %>

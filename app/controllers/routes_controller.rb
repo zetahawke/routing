@@ -2,7 +2,7 @@ class RoutesController < ApplicationController
   before_action :set_route, only: %i[show map destroy]
 
   def index
-    @routes = Route.all
+    @routes = Route.filter(params.slice(:load_name, :start_time, :date))
   end
 
   def new
@@ -35,7 +35,7 @@ class RoutesController < ApplicationController
       if @route
         [@route.map_stops]
       else
-        Route.all.map(&:map_stops)
+        Route.filter(params.slice(:load_name, :start_time, :date)).map(&:map_stops)
       end
   end
 

@@ -57,7 +57,7 @@ files and transformation to the data model). For this you can use delayed jobs o
 any other implementation of work queues.
 Extra:
 To visualize routes on the map, you must use the google API:
-AIzaSyCKRdW3xHzrLNLnOAXJI1dL5w0hollGrpI
+PRIVATED
 
 ## Stages
 Stage 1:

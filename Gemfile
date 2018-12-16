@@ -28,7 +28,6 @@ gem 'sidekiq'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem "daemons"
-gem 'filterrific'
 
 gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes

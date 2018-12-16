@@ -5,6 +5,28 @@
       <br>
       <%= link_to 'Nuevas rutas', new_route_path, class: 'btn-large center-align waves-effect waves-light green' %>
     </div>
+    <hr>
+    <br>
+    <div class="row center-align">
+      <form action="/routes" method="get">
+        <div class="col m3">
+          <label for="load_name">Nombre de carga</label>
+          <input type="text" name="load_name" id="load_name">
+        </div>
+        <div class="col m3">
+          <label for="start_time">Hora de inicio</label>
+          <input type="datetime" name="start_time" id="start_time">
+        </div>
+        <div class="col m3">
+          <label for="date">Fecha</label>
+          <input type="date" name="date" id="date">
+        </div>
+        <div class="col m3">
+          <br>
+          <input type="submit" value="Buscar" class='btn'>
+        </div>
+      </form>
+    </div>
     <br>
     <table class="highlight">
       <thead>
@@ -32,7 +54,7 @@
             <td><%= route.stops.count%></td>
             <td><%= route.status%></td>
             <td>
-              <%= link_to 'Ver', route_map_path(route) %>
+              <%= link_to 'Ver', root_path(route_id: route.id) %>
             </td>
           </tr>
         <% end %>
