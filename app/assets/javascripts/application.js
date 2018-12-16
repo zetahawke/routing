@@ -16,6 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+window.onload = function () {
   M.updateTextFields();
-});
+};

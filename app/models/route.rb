@@ -55,4 +55,8 @@ class Route < ApplicationRecord
       )
     end
   end
+
+  def map_stops
+    stops.map { |stop| { lat: stop.latitude.to_f.round(2), lng: stop.length.to_f.round(2) } }
+  end
 end
