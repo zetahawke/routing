@@ -4,9 +4,10 @@
     <title>Routing</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places,drawing"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>

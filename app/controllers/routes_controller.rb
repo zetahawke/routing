@@ -30,7 +30,14 @@ class RoutesController < ApplicationController
     redirect_to routes_path, notice: 'cant hold that request'
   end
 
-  def map; end
+  def map
+    @coords =
+      if @route
+        [@route.map_stops]
+      else
+        Route.all.map(&:map_stops)
+      end
+  end
 
   private
 
