@@ -10,12 +10,13 @@ class RoutesController < ApplicationController
   end
 
   def create
-    route = Route.new(route_params)
-    if route.save!
-      route.proccess_stops(params)
-      redirect_to route_map_path(route)
+    binding.pry
+    # route = Route.new(route_params)
+    # if route.save!
+    if Route.proccess_stops(params])
+      redirect_to routes_path
     else
-      redirect_back fallback_location
+      redirect_back :fallback_location
     end
   rescue StandardError => e
     puts e.message
@@ -24,7 +25,7 @@ class RoutesController < ApplicationController
 
   def destroy
     redirect_to routes_path if @route.destroy
-  rescue StandardError =>
+  rescue StandardError => e
     puts e.message
     redirect_to routes_path, notice: 'cant hold that request'
   end
@@ -34,7 +35,7 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:load_name, :route, :date, :start_time, :end_time,)
+    params.require(:route).permit(:load_name, :route)
   end
 
   def set_route
