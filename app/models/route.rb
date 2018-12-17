@@ -26,17 +26,18 @@ class Route < ApplicationRecord
       }
     end
 
-    Route.build_routes(routes, params[:route][:load_name])
+    Route.build_routes(routes, params)
   end
 
-  def self.build_routes(routes, load_name)
+  def self.build_routes(routes, params)
     routes = routes.group_by { |route| route[:route] }
     routes.each_with_index do |route_stops, index|
       route_number = route_stops.first
       stops = route_stops.last
       stops = stops.sort_by { |stop| stop[:arrived_time] }
       route = Route.create(
-        load_name: "#{load_name}_#{index}",
+        load_name: "#{params[:route][:load_name]}_#{index}",
+        date: params[:route][:date],
         route: route_number,
         start_time: stops.first[:arrived_time].try(:to_time),
         end_time: stops.last[:arrived_time].try(:to_time)

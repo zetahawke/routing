@@ -42,7 +42,7 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:load_name, :route)
+    params.require(:route).permit(:load_name, :route, :date)
   end
 
   def set_route

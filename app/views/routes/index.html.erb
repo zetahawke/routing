@@ -54,7 +54,7 @@
             <td><%= route.stops.count%></td>
             <td><%= route.status%></td>
             <td>
-              <%= link_to 'Ver', root_path(route_id: route.id) %>
+              <%= link_to 'Ver', root_path(route_id: route.id), data: { turbolinks: false } %>
             </td>
           </tr>
         <% end %>
