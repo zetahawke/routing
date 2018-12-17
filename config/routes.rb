@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :routes do
     get 'map', to: 'routes#map'
   end
+
+  mount ActionCable.server => '/cable'
 end
