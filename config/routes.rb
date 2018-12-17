@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     get 'map', to: 'routes#map'
   end
 
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
 end

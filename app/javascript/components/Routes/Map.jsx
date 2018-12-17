@@ -35,23 +35,24 @@ class Map extends React.Component {
 
   componentDidMount() {
 
-    App.map = App.cable.subscriptions.create("MapChannel", {
-      connected: function () {
-        self.initMap(self.props.coords);
-      },
+    self.initMap(self.props.coords);
+    // App.map = App.cable.subscriptions.create("MapChannel", {
+    //   connected: function () {
+    //     self.initMap(self.props.coords);
+    //   },
 
-      disconnected: function () {
-      },
+    //   disconnected: function () {
+    //   },
 
-      received: function (data) {
-        // self.clearRoutes();
-        // self.loadRoutes(data.coords, self.map)
-      },
+    //   received: function (data) {
+    //     // self.clearRoutes();
+    //     // self.loadRoutes(data.coords, self.map)
+    //   },
 
-      speak: function () {
-        // this.perform('refresh_info');
-      }
-    });
+    //   speak: function () {
+    //     // this.perform('refresh_info');
+    //   }
+    // });
 
     // setInterval(function () {
     //   App.map.speak();
